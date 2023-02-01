@@ -1,7 +1,11 @@
 <?php
 function dbConnect(){
-    $user = 'postuser';
-    $pass = 'e2k2021';
+    require './vendor/autoload.php';
+
+    Dotenv/Dotenv::createImmutable(__DIR__)->load();
+
+    $user = $_ENV['user'];
+    $pass = $_ENV['pass'];
 
     try {
         $dbh = new PDO('mysql:host=localhost;dbname=blog', $user, $pass);
